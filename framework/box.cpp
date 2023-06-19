@@ -1,13 +1,14 @@
 #include <numbers>
 #include "box.hpp"
 
-Box::Box(std::string const& name, glm::vec3 const& color, glm::vec3 const& min, glm::vec3 const& max):
-	Shape(name, color),
-	min_(min),
-	max_(max){
+Box::Box(std::string const& name, glm::vec3 const& color, glm::vec3 const& min, glm::vec3 const& max) :
+	Shape{ name, color },
+	min_{ min },
+	max_{ max } {
+	/*
 	if (!(max_.x > min_.x && max_.y > min_.y && max_.z > min_.z)) {
 		throw "Diese Vectoren spannen keine Box ein";
-	}
+	}*/
 }
 
 float Box::area() const {
