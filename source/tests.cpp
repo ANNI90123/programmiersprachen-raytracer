@@ -56,6 +56,15 @@ TEST_CASE("returns the volume of a box", "[volume()]") {
 
 }
 
+TEST_CASE("prints out a shape, sphere or box", "[print(std::ostream&)]") {
+
+	Sphere s{ "sphere", glm::vec3{1.0f, 1.0f, 0.0f}, glm::vec3{5.0f, 5.0f, 5.0f}, 4.0f };
+	Box b{ "box", glm::vec3{0.0f, 1.0f, 1.0f}, glm::vec3{5.0f, 5.0f, 5.0f}, glm::vec3{7.0f, 8.0f, 6.0f} };
+
+	std::cout << s << b;
+
+}
+
 
 int main(int argc, char *argv[])
 {
