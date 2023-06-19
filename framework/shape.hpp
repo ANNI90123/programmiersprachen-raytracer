@@ -4,10 +4,14 @@
 #include <glm/vec3.hpp>
 #include <string>
 #include <iostream>
+#include "color.hpp"
 
 class Shape {
 public:
-	Shape(std::string const& name, glm::vec3 const& color);
+	Shape(std::string const& name, Color const& color);
+
+	std::string get_name() const;
+	Color get_color() const;
 
 	virtual float area() const = 0;
 	virtual float volume() const = 0;
@@ -16,7 +20,7 @@ public:
 
 private:
 	std::string name_;
-	glm::vec3 color_;
+	Color color_;
 
 };
 

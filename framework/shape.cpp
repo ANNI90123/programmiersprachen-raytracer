@@ -1,10 +1,19 @@
 #include "shape.hpp"
 
-Shape::Shape(std::string const& name, glm::vec3 const& color):
+Shape::Shape(std::string const& name, Color const& color):
 	name_(name),
 	color_(color){
 
 }
+
+std::string Shape::get_name() const{
+	return name_;
+}
+
+Color Shape::get_color() const {
+	return color_;
+}
+
 
 std::ostream& Shape::print(std::ostream& os) const {
 	return os << name_ << "\nFarbe: r(" << color_.r << ") g(" << color_.g << ") b(" << color_.b << ") \n";
