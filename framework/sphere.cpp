@@ -18,3 +18,8 @@ float Sphere::area() const {
 float Sphere::volume() const {
 	return 4 / 3 * std::numbers::pi + radius_ * radius_ * radius_;
 }
+
+
+std::ostream& Sphere::print(std::ostream& os) const{
+	return print(os) << "Center: x(" << center_.x << ") y(" << center_.y << " z(" << center_.z << ") \nRadius: " << radius_ << "\n";
+}

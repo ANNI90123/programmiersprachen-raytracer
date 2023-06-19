@@ -7,7 +7,7 @@ Shape::Shape(std::string const& name, glm::vec3 const& color):
 }
 
 std::ostream& Shape::print(std::ostream& os) const {
-	return os << "Shape: " << name_ << "\nFarbe: r(" << color_.r << ") g(" << color_.g << ") b(" << color_.b << ") \n\n";
+	return os << "Shape: " << name_ << "\nFarbe: r(" << color_.r << ") g(" << color_.g << ") b(" << color_.b << ") \n";
 }
 
 std::ostream& operator<<(std::ostream& os, Shape const& s) {
