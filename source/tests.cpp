@@ -4,6 +4,8 @@
 #include "sphere.hpp"
 #include "box.hpp"
 #include <numbers>
+#include <glm/glm.hpp>
+#include <glm/gtx/intersect.hpp>
 
 
 
@@ -62,6 +64,22 @@ TEST_CASE("prints out a shape, sphere or box", "[print(std::ostream&)]") {
 	Box b{ "box", glm::vec3{0.0f, 1.0f, 1.0f}, glm::vec3{5.0f, 5.0f, 5.0f}, glm::vec3{7.0f, 8.0f, 6.0f} };
 
 	std::cout << s << b;
+
+}
+
+
+TEST_CASE("intersect_ray_sphere", "[intersect]") {
+	//Ray
+	glm::vec3 ray_origin{0.0f, 0.0f, 0.0f};
+
+	glm::vec3 ray_direction{0.0f, 0.0f, 1.0f};
+
+	glm::vec3 sphere_center{0.0f, 0.0f, 5.0f};
+	float sphere_radius{1.0f};
+
+	float distance = 0.0f;
+	auto result = glm::intersectRaySphere(ray_origin, ray_direction, sphere_center, sphere_radius * sphere_radius, distance);
+	REQUIRE(distance == Approx(4.0f));
 
 }
 
