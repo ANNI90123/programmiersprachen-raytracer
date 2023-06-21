@@ -83,6 +83,42 @@ TEST_CASE("intersect_ray_sphere", "[intersect]") {
 
 }
 
+TEST_CASE("calculates the hitpoint of an intersection between a ray and a sphere", "[intersect]") {
+
+	Sphere s1{ "s1", Color{1.0f, 1.0f, 0.0f}, glm::vec3{5.0f, 5.0f, 5.0f}, 4.0f };
+	HitPoint hp1 =  s1.intersect(Ray{ glm::vec3{0.0f, 0.0f, 0.0f}, glm::vec3{1.0f, 1.0f, 1.0f} });
+
+	Sphere s2{ "s2", Color{1.0f, 1.0f, 0.0f}, glm::vec3{2.0f, 5.0f, 3.0f}, 0.0f };
+	HitPoint hp2 = s2.intersect(Ray{ glm::vec3{0.0f, 0.0f, 0.0f}, glm::vec3{1.0f, 1.0f, 1.0f} });
+
+	Sphere s3{ "s3", Color{1.0f, 1.0f, 0.0f}, glm::vec3{5.0f, 5.0f, 5.0f}, 2.0f };
+	HitPoint hp3 = s3.intersect(Ray{ glm::vec3{0.0f, 0.0f, 0.0f}, glm::vec3{1.0f, 1.0f, .0f} });
+
+	Sphere s4{ "s4", Color{1.0f, 1.0f, 0.0f}, glm::vec3{-5.0f, 0.0f, 0.0f}, 3.0f };
+	HitPoint hp4 = s4.intersect(Ray{ glm::vec3{-3.0f, 0.0f, 0.0f}, glm::vec3{-1.0f, 0.0f, 0.0f} });
+
+	REQUIRE(hp1.intersection == true);
+	REQUIRE(hp1.distance == Approx(std::sqrt(75) - 4.0f));
+	REQUIRE(hp1.name == "s1");
+
+	REQUIRE(hp2.intersection == false);
+	REQUIRE(hp2.distance == INFINITY);
+	REQUIRE(hp2.intersection_point.x == INFINITY);
+	REQUIRE(hp2.intersection_point.y == INFINITY);
+	REQUIRE(hp2.intersection_point.z == INFINITY);
+
+	REQUIRE(hp3.intersection == false);
+	REQUIRE(hp3.distance == INFINITY);
+
+	REQUIRE(hp4.intersection == true);
+	REQUIRE(hp4.distance == Approx(5.0f));
+	REQUIRE(hp4.name == "s4");
+	REQUIRE(hp4.intersection_point.x == Approx(- 8.0f));
+	REQUIRE(hp4.intersection_point.y == Approx(0.0f));
+	REQUIRE(hp4.intersection_point.z == Approx(0.0f));
+}
+
+
 
 int main(int argc, char *argv[])
 {

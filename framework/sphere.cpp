@@ -1,3 +1,4 @@
+#include <cmath>
 #include <numbers>
 #include <glm/glm.hpp>
 #include <glm/gtx/intersect.hpp>
@@ -35,6 +36,13 @@ HitPoint Sphere::intersect(Ray const& ray) const {
 	bool intersection = glm::intersectRaySphere(ray.origin, direction, center_, radius_ * radius_, distance);
 	glm::vec3 intersection_point = ray.origin + distance * direction;
 
-	return HitPoint{intersection, distance, Shape::get_name(), Shape::get_color(), intersection_point, direction};
+	
+	if (intersection) {
+		return HitPoint{intersection, distance, Shape::get_name(), Shape::get_color(), intersection_point, direction};
+	}
+	else {
+		return HitPoint{ intersection, INFINITY, Shape::get_name(), Shape::get_color(), glm::vec3{INFINITY, INFINITY, INFINITY}, direction };
+	}
+	
 
 }
