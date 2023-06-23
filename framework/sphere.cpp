@@ -11,7 +11,12 @@ Sphere::Sphere(std::string const& name, Color const& color, glm::vec3 const& cen
 	if (radius_ < 0.0f) {
 		throw "Der Radius muss eine positive Zahl sein";
 	}
+	std::cout << "Sphere constructor\n";
 
+}
+
+Sphere::~Sphere() {
+	std::cout << "Sphere destructor\n";
 }
 
 float Sphere::area() const {

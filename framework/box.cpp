@@ -9,6 +9,13 @@ Box::Box(std::string const& name, Color const& color, glm::vec3 const& min, glm:
 	if (!(max_.x > min_.x && max_.y > min_.y && max_.z > min_.z)) {
 		throw "Diese Vectoren spannen keine Box ein";
 	}*/
+
+	std::cout << "Box constructor\n";
+
+}
+
+Box::~Box() {
+	std::cout << "Box destructor\n";
 }
 
 float Box::area() const {

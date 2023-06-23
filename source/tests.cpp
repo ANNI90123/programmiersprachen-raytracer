@@ -118,6 +118,20 @@ TEST_CASE("calculates the hitpoint of an intersection between a ray and a sphere
 	REQUIRE(hp4.intersection_point.z == Approx(0.0f));
 }
 
+TEST_CASE("prints out the order of constructors and destructors") {
+	Color red{255, 0, 0};
+	glm::vec3 position{0.0f, 0.0f, 0.0f};
+	Sphere* s1 = new Sphere{"sphere0", red, position, 1.2f};
+	Shape* s2 = new Sphere{ "sphere1", red, position, 1.2f };
+
+	s1->print(std::cout);
+	s2->print(std::cout);
+
+	delete s1;
+	delete s2;
+
+}
+
 
 
 int main(int argc, char *argv[])

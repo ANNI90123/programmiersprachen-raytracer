@@ -9,6 +9,7 @@
 class Shape {
 public:
 	Shape(std::string const& name, Color const& color);
+	virtual ~Shape();
 
 	std::string get_name() const;
 	Color get_color() const;
