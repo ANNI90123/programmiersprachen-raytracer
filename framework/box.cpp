@@ -5,10 +5,15 @@ Box::Box(std::string const& name, Color const& color, glm::vec3 const& min, glm:
 	Shape{ name, color },
 	min_{ min },
 	max_{ max } {
-	/*
-	if (!(max_.x > min_.x && max_.y > min_.y && max_.z > min_.z)) {
-		throw "Diese Vectoren spannen keine Box ein";
-	}*/
+	if (max_.x < min_.x) {
+		std::swap(max_.x, min_.x);
+	}
+	if (max_.y < min_.y) {
+		std::swap(max_.y, min_.y);
+	}
+	if (max_.z < min_.z) {
+		std::swap(max_.z, min_.z);
+	}
 
 	std::cout << "Box constructor\n";
 

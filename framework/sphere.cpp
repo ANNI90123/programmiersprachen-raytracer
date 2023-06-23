@@ -9,7 +9,7 @@ Sphere::Sphere(std::string const& name, Color const& color, glm::vec3 const& cen
 	center_{ center },
 	radius_{ radius } {
 	if (radius_ < 0.0f) {
-		throw "Der Radius muss eine positive Zahl sein";
+		radius_ = -radius_;
 	}
 	std::cout << "Sphere constructor\n";
 

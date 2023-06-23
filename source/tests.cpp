@@ -13,7 +13,7 @@
 TEST_CASE("returns the surface area of a sphere", "[area()]") {
 
 	Sphere s1{ "s1", Color{0.0f, 0.0f, 0.0f}, glm::vec3{5.0f, 5.0f, 5.0f}, 4.0f };
-	Sphere s2{ "s2", Color{0.0f, 0.0f, 0.0f},glm::vec3{-20.0f, 20.0f, 20.0f}, 5.3f };
+	Sphere s2{ "s2", Color{0.0f, 0.0f, 0.0f},glm::vec3{-20.0f, 20.0f, 20.0f}, -5.3f };
 	Sphere s3{ "s3", Color{0.0f, 0.0f, 0.0f}, glm::vec3{-5.0f, -5.0f, -5.0f}, 0.0f };
 	
 	REQUIRE(s1.area() == Approx(201.0619f));
@@ -51,10 +51,13 @@ TEST_CASE("returns the volume of a box", "[volume()]") {
 	Box b1{ "b1", Color{0.0f, 0.0f, 0.0f}, glm::vec3{5.0f, 5.0f, 5.0f}, glm::vec3{7.0f, 8.0f, 6.0f} };
 	Box b2{ "b2", Color{0.0f, 0.0f, 0.0f}, glm::vec3{-5.0f, -5.0f, -5.0f}, glm::vec3{-3.0f, -2.0f, -1.0f} };
 	Box b3{ "b3", Color{0.0f, 0.0f, 0.0f}, glm::vec3{5.0f, 5.0f, 5.0f}, glm::vec3{5.0f, 5.0f, 5.0f} };
+	Box b4{ "b4", Color{0.0f, 0.0f, 0.0f}, glm::vec3{3.0f, 3.0f, 3.0f}, glm::vec3{0.0f, 0.0f, 0.0f} };
 
 	REQUIRE(b1.volume() == Approx(6.0f));
 	REQUIRE(b2.volume() == Approx(24.0f));
 	REQUIRE(b3.volume() == Approx(0.0f));
+	REQUIRE(b4.volume() == Approx(27.0f));
+
 
 }
 
